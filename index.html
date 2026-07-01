@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Megha Mahesh -Full Stack Engineer</title>
+<title>Megha Mahesh —Full Stack Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -133,6 +133,65 @@
     opacity:0; animation:fadeUp 1s .8s forwards;
   }
   .scroll-cue .line{ width:1px; height:36px; background:linear-gradient(var(--purple), transparent); animation:scrollLine 2s infinite; }
+
+  /* HERO GRID */
+  .hero-grid{ display:grid; grid-template-columns:1fr 420px; gap:48px; align-items:center; }
+  .hero-left{}
+  .hero-right{ display:flex; justify-content:center; align-items:center; opacity:0; animation:fadeUp 1s .5s forwards; }
+
+  /* PHOTO */
+  .photo-wrap{
+    position:relative; width:320px; height:320px;
+    animation:float 6s ease-in-out infinite;
+  }
+  @keyframes float{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-14px);} }
+
+  .hero-photo{
+    width:280px; height:280px; object-fit:cover; object-position:center top;
+    border-radius:50%; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    z-index:2;
+    filter:contrast(1.02) brightness(1.03);
+  }
+
+  .photo-ring{
+    position:absolute; inset:-12px; border-radius:50%;
+    background:conic-gradient(from 0deg, var(--purple-deep), var(--purple-bright), var(--purple), #4c1d95, var(--purple-bright), var(--purple-deep));
+    animation:spin 5s linear infinite;
+    z-index:1;
+  }
+  .photo-ring::after{
+    content:''; position:absolute; inset:3px; border-radius:50%; background:var(--bg);
+  }
+
+  .photo-ring-2{
+    position:absolute; inset:-22px; border-radius:50%;
+    border:1px solid rgba(155,107,255,0.2);
+    animation:spin 10s linear infinite reverse;
+    z-index:0;
+  }
+  .photo-ring-2::before{
+    content:''; position:absolute; top:50%; left:-4px;
+    width:8px; height:8px; border-radius:50%;
+    background:var(--purple-bright); box-shadow:0 0 10px var(--purple-bright);
+    transform:translateY(-50%);
+  }
+
+  @keyframes spin{ to{transform:rotate(360deg);} }
+
+  .photo-dot{
+    position:absolute; border-radius:50%; z-index:3;
+    background:var(--purple-bright); box-shadow:0 0 10px var(--purple-bright);
+  }
+  .photo-dot-1{ width:10px; height:10px; top:8px; right:24px; animation:pulse 2.5s infinite; }
+  .photo-dot-2{ width:6px; height:6px; bottom:16px; left:12px; animation:pulse 2.5s .7s infinite; }
+  .photo-dot-3{ width:8px; height:8px; bottom:40px; right:4px; animation:pulse 2.5s 1.3s infinite; }
+
+  @media(max-width:900px){
+    .hero-grid{ grid-template-columns:1fr; text-align:center; }
+    .hero-right{ margin-top:48px; }
+    .eyebrow, .hero-actions{ justify-content:center; }
+    .hero-sub{ margin:0 auto; }
+  }
 
   @keyframes fadeUp{ from{opacity:0; transform:translateY(22px);} to{opacity:1; transform:translateY(0);} }
   @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:.3;} }
@@ -273,13 +332,27 @@
 <section class="hero">
   <canvas id="hero-canvas"></canvas>
   <div class="wrap hero-content">
-    <div class="eyebrow"><span class="dot"></span> Open to AI/ML internships & full-time roles</div>
-    <div class="hero-name">Megha Mahesh</div>
-    <h1>Building systems that<br>turn <span class="grad">language into action.</span></h1>
-    <p class="hero-sub">I'm Megha — a final-year MCA student building LLM, RAG, and computer vision systems that hold up outside the notebook. Currently researching prompt-injection security in agentic AI pipelines.</p>
-    <div class="hero-actions">
-      <a href="#projects" class="btn btn-primary">View my work →</a>
-      <a href="MEGHAMAHESH_Resume.pdf" target="_blank" class="btn btn-ghost">Download resume</a>
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="eyebrow"><span class="dot"></span> Open to AI/ML internships & full-time roles</div>
+        <div class="hero-name">Megha Mahesh</div>
+        <h1>Building systems that<br>turn <span class="grad">language into action.</span></h1>
+        <p class="hero-sub">I'm Megha — a final-year MCA student building LLM, RAG, and computer vision systems that hold up outside the notebook. Currently researching hallucination mitigation in agentic RAG pipelines.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View my work →</a>
+          <a href="MEGHAMAHESH_Resume.pdf" target="_blank" class="btn btn-ghost">Download resume</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="photo-wrap">
+          <div class="photo-ring"></div>
+          <div class="photo-ring-2"></div>
+          <img src="MeghaMahesh2.jpeg" alt="Megha Mahesh" class="hero-photo"/>
+          <div class="photo-dot photo-dot-1"></div>
+          <div class="photo-dot photo-dot-2"></div>
+          <div class="photo-dot photo-dot-3"></div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="scroll-cue"><span>SCROLL</span><div class="line"></div></div>
@@ -326,7 +399,7 @@
 <section id="projects">
   <div class="wrap">
     <span class="section-tag reveal">// 02 — selected work</span>
-    <h2 class="section-title reveal">Three problems. Three working systems.</h2>
+    <h2 class="section-title reveal">Four problems. Four working systems.</h2>
     <p class="section-intro reveal">Each project below went from a real constraint to deployed, evaluated code — not a proof of concept left on a slide.</p>
 
     <div style="margin-top:56px;">
@@ -467,7 +540,7 @@
   </div>
 </section>
 
-<footer>© Megha Mahesh — built with intent.</footer>
+<footer>© 2026 Megha Mahesh — built with intent.</footer>
 
 <script>
   // mobile nav
